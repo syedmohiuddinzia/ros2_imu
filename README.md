@@ -7,12 +7,12 @@ Before proceeding with the ESP32 and Micro-ROS setup, ensure that your ROS2 envi
 
 ### 1.1 Install ROS2
 Follow the official [ROS2 installation guide](https://docs.ros.org/en/rolling/Installation.html) for your operating system. </br>
-For example, for Ubuntu, the commands would be:
+For example, for Ubuntu 22.04, the commands would be:
 ```bash
 sudo apt update
 sudo apt install curl gnupg2 lsb-release
 sudo curl -sSL https://get.rvm.io | bash -s stable --rails
-sudo apt install ros-foxy-desktop
+sudo apt install ros-humble-desktop
 ```
 
 ### 1.2 Set Up ROS2 Workspace
@@ -61,15 +61,27 @@ Once the code and launch file are ready, it’s time to build the workspace.
 ### 5.1 Build the Workspace
 Go to the workspace root and build the workspace:
 ```bash
-cd ~/ros2_ws
-colcon build
-source install/setup.bash
+cd ~/ros2_ws/src
 ```
-### 5.2 Install Dependencies
-If you haven’t installed dependencies for your package, use the following command:
+### 5.2 Clone the repository
+```bash
+git clone <repository-url>
+```
+### 5.3 Install dependencies 
+For the project, we can check the README.md or package.xml file in the cloned repository for specific dependencies. Usually, it's done with:
 ```bash
 rosdep install --from-paths src --ignore-src -r -y
 ```
+### 5.4 Build the workspace
+```bash
+cd ~/ros2_ws
+colcon build --symlink-install
+```
+### 5.5 Source the workspace
+```bash
+source ~/ros2_ws/install/setup.bash
+```
+
 ## 6. Run the System
 ### 6.1 Run the Launch File
 Start your system by launching the ROS2 nodes:
@@ -87,7 +99,7 @@ For example, you should see topics like:
 - /imu/data
 - /mag/data
 - /temp
-- /heading
+- /headingros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
 ```
 
 ## 7. Troubleshooting
@@ -98,6 +110,4 @@ For example, you should see topics like:
 ## 8. Additional Notes
 ### 8.1 Micro-ROS
 - Micro-ROS is a powerful library that allows microcontrollers (like ESP32) to communicate with ROS2 systems. It helps in reducing the complexity of integrating embedded systems with ROS2, providing a simple yet efficient way to exchange sensor data.
-- You can find more information on Micro-ROS ![here](https://micro.ros.org/).
-
-  - 
+- You can find more information on [Micro-ROS](https://micro.ros.org/).
