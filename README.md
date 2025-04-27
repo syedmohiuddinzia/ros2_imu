@@ -1,4 +1,5 @@
 # ros2_imu
+[img0](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/0.png)
 
 ---
 
@@ -89,7 +90,7 @@ Start your system by launching the micro ros agent
 ```bash
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
 ```
-![img1]()
+![img1](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/1.png)
 ```bash
 ros2 launch your_package imu_launch.py
 ```
@@ -100,22 +101,22 @@ In new termainal you can check the topics to verify that data is being published
 ros2 topic list
 ```
 you should see topics like:
-[img2]()
+[img2](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/2.png)
 Now check the data if it is available ```/imu/data```
 ```bash
 ros2 topic echo /imu/data
 ```
-[img3]()
+[img3](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/3.png)
 And then launch the ```imu_launch.py``` in new terminal
 ```bash
 ros2 launch imu imu_launch.py
 ```
-[img4]()
+[img4](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/4.png)
 Open ```rviz2``` in another terminal, and add **IMU** in display. Now move the IMU sensor to see if it also moving in the display.
 ```bash
 rviz2
 ```
-[img5]()
+[img5](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/5.png)
 In the end to plot grphs open ```rqt``` in another terminal. In topic add
 ```bash
 rqt
@@ -127,6 +128,7 @@ and then again in topic add
 ```
 /imu/data/angular_velocity
 ```
+[img6](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/6.png)
 
 ## 7. Troubleshooting
 ### 7.1 Common Issues
