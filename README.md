@@ -67,7 +67,7 @@ cd ~/ros2_ws/src
 ```
 ### 4.2 Clone the repository
 ```bash
-git clone <repository-url>
+git clone git@github.com:syedmohiuddinzia/ros2_imu.git
 ```
 ### 4.3 Install dependencies 
 For the project, we can check the README.md or package.xml file in the cloned repository for specific dependencies. Usually, it's done with:
