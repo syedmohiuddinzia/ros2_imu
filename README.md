@@ -57,50 +57,75 @@ Upload the Arduino code to your ESP32 using the Arduino IDE:
 2. Select the correct port under Tools → Port.
 3. Click Upload.
 
-## 5. Build Your ROS2 Workspace
+## 4. Build Your ROS2 Workspace
 Once the code and launch file are ready, it’s time to build the workspace.
 ### 5.1 Build the Workspace
 Go to the workspace root and build the workspace:
 ```bash
 cd ~/ros2_ws/src
 ```
-### 5.2 Clone the repository
+### 4.2 Clone the repository
 ```bash
 git clone <repository-url>
 ```
-### 5.3 Install dependencies 
+### 4.3 Install dependencies 
 For the project, we can check the README.md or package.xml file in the cloned repository for specific dependencies. Usually, it's done with:
 ```bash
 rosdep install --from-paths src --ignore-src -r -y
 ```
-### 5.4 Build the workspace
+### 4.4 Build the workspace
 ```bash
 cd ~/ros2_ws
 colcon build --symlink-install
 ```
-### 5.5 Source the workspace
+### 4.5 Source the workspace
 ```bash
 source ~/ros2_ws/install/setup.bash
 ```
 
 ## 6. Run the System
 ### 6.1 Run the Launch File
-Start your system by launching the ROS2 nodes:
+Start your system by launching the micro ros agent
+```bash
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+```
+![img1]()
 ```bash
 ros2 launch your_package imu_launch.py
 ```
 This will launch the necessary transforms and data publishers for the IMU, magnetometer, temperature, and heading information.
 ### 6.2 Check the Data
-You can check the topics to verify that data is being published correctly:
+In new termainal you can check the topics to verify that data is being published correctly:
 ```bash
 ros2 topic list
 ```
-For example, you should see topics like:
+you should see topics like:
+[img2]()
+Now check the data if it is available ```/imu/data```
+```bash
+ros2 topic echo /imu/data
 ```
-- /imu/data
-- /mag/data
-- /temp
-- /headingros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+[img3]()
+And then launch the ```imu_launch.py``` in new terminal
+```bash
+ros2 launch imu imu_launch.py
+```
+[img4]()
+Open ```rviz2``` in another terminal, and add **IMU** in display. Now move the IMU sensor to see if it also moving in the display.
+```bash
+rviz2
+```
+[img5]()
+In the end to plot grphs open ```rqt``` in another terminal. In topic add
+```bash
+rqt
+```
+```
+/imu/data/linear_acceleration
+```
+and then again in topic add
+```
+/imu/data/angular_velocity
 ```
 
 ## 7. Troubleshooting
