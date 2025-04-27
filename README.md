@@ -45,6 +45,7 @@ You will need several libraries for the Micro-ROS and sensor communication:
 The provided code initializes the MPU9250 sensor, reads the IMU data, and publishes it via Micro-ROS to the ROS2 system.
 - The code uses Micro-ROS for communication and MPU9250 for IMU data.
 - It publishes IMU data, magnetometer data, temperature data, and heading information.
+  
 ### 3.2 Modify the Code for Your Setup
 Ensure that you modify the following in the code:
 - Update the MPU9250 sensor I2C address (0x68 by default).
