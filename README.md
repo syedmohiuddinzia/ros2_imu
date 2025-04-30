@@ -1,5 +1,4 @@
 # ros2_imu
-![img0](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/0.png)
 
 ---
 
@@ -40,6 +39,9 @@ You will need several libraries for the Micro-ROS and sensor communication:
   - Install via Arduino IDE Library Manager: **Tools → Manage Libraries → Search for "micro_ros_arduino".**
 - **MPU9250 Library:** For interfacing with the MPU9250 IMU sensor.
   - Install via Arduino IDE Library Manager: **Tools → Manage Libraries → Search for "MPU9250".**
+
+2.2 Circuit Diagram
+![img](https://github.com/syedmohiuddinzia/ros2_imu/blob/main/images/img.png)
 
 ## 3. Upload Code to ESP32
 ### 3.1 Code Overview
